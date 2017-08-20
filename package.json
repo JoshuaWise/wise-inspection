@@ -1,0 +1,34 @@
+{
+  "name": "wise-inspection",
+  "version": "0.1.0",
+  "description": "Synchronous inspection for native promises",
+  "main": "index.js",
+  "scripts": {
+    "install": "node tools/install",
+    "test": "$(npm bin)/mocha --timeout 1000 --slow 500"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JoshuaWise/wise-inspection.git"
+  },
+  "keywords": [
+    "native",
+    "promise",
+    "synchronous",
+    "inspection",
+    "state"
+  ],
+  "author": "Joshua Wise <joshuathomaswise@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoshuaWise/wise-inspection/issues"
+  },
+  "homepage": "https://github.com/JoshuaWise/wise-inspection#readme",
+  "dependencies": {
+    "bindings": "^1.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "mocha": "^3.4.2"
+  }
+}
