@@ -1,28 +1,28 @@
-var util = require('util');
-var inspect = require('bindings')({
+const util = require('util');
+const inspect = require('bindings')({
 	bindings: 'inspect.node',
 	module_root: __dirname
 }).inspect;
 
-function format(value) {
-	var string = util.format(value);
-	if (string.indexOf('\n') !== -1) return '\n  ' + string;
-	return string;
+function format(value, options) {
+	const str = util.inspect(value, options);
+	return str.includes('\n') ? '\n  ' + str : str;
 }
 
-function customInspect() {
+function customInspect(_, options) {
 	if (this == null || this.inspect !== inspect) {
 		throw new TypeError('Illegal invocation');
 	}
-	var inspection = this.inspect();
-	var name = '' + (this.constructor.name || 'Promise');
-	if (inspection.state === 'fulfilled') {
-		return name + ' { ' + format(inspection.value) + ' }';
+	const inspection = this.inspect();
+	const name = String((this.constructor.name || 'Promise'));
+	switch (inspection.state) {
+		case 'fulfilled':
+			return `${name} { ${format(inspection.value, options)} }`;
+		case 'rejected':
+			return `${name} { <rejected> ${format(inspection.reason, options)} }`;
+		default:
+			return `${name} { <pending> }`;
 	}
-	if (inspection.state === 'rejected') {
-		return name + ' { <rejected> ' + format(inspection.reason) + ' }';
-	}
-	return name + ' { <pending> }';
 }
 
 function isNativePromise(fn) {
@@ -39,9 +39,7 @@ function wiseInspection(Class) {
 		throw new TypeError('The given class is not a native Promise');
 	}
 	Class.prototype.inspect = inspect;
-	if (util.inspect && typeof util.inspect.custom === 'symbol') {
-		Class.prototype[util.inspect.custom] = customInspect;
-	}
+	Class.prototype[util.inspect.custom] = customInspect;
 	return Class;
 }
 
