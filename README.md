@@ -1,6 +1,8 @@
 # wise-inspection [![Build Status](https://img.shields.io/travis/JoshuaWise/wise-inspection.svg)](https://travis-ci.org/JoshuaWise/wise-inspection)
 
-This package augments native promises (or a subclass thereof) with synchronous inspection capabilities. This is only possible for Node.js versions `8.0.0+`.
+This package augments native promises (or a subclass thereof) with synchronous inspection capabilities.
+
+This is only possible for Node.js versions `8.0.0+`.
 
 ## Installation
 
