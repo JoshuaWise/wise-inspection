@@ -20,7 +20,7 @@ console.log(promise.inspect());
 // => { state: 'fulfilled', value: 'foobar' }
 ```
 
-## The inspection object
+## The descriptor object
 
 If the promise is:
 
