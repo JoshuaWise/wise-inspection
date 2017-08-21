@@ -2,7 +2,7 @@
 
 This package augments native promises (or a subclass thereof) with synchronous inspection capabilities.
 
-This is only possible for Node.js versions `8.0.0+`.
+This is only possible for Node.js version 8 and up.
 
 ## Installation
 
