@@ -1,6 +1,6 @@
 {
   "name": "wise-inspection",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Synchronous inspection for native promises",
   "main": "index.js",
   "scripts": {
